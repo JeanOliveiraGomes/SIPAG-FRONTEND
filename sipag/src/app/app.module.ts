@@ -12,6 +12,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { LoggedInGuardAdmin } from './config/LoggedInGuardAdmin';
 import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
 import { LoggedInGuardOperador } from './config/LoggedInGuardOperador';
+import { CadastroEstabelecimentoComponent } from './cadastro-estabelecimento/cadastro-estabelecimento.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoggedInGuardOperador } from './config/LoggedInGuardOperador';
     LoginComponent,
     HomeComponent,
     CadastroPessoaComponent,
+    CadastroEstabelecimentoComponent,
   ],
   imports: [
     HttpClientModule,

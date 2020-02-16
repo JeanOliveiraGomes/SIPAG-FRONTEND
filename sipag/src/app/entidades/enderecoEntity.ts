@@ -2,15 +2,19 @@ import { GenericEntity } from './genericEntity';
 
 export class EnderecoEntity extends GenericEntity {
     cep: string;
+    lougradouro: string;
     bairro: string;
-    complemento: string;
+    cidade: string;
     uf: string;
+    complemento: string;
 
     constructor(){
         super();
         this.cep = '';
+        this.lougradouro = '';
         this.bairro = '';
-        this.complemento = '';
+        this.cidade = '';
         this.uf = '';
+        this.complemento = '';
     }
 }
