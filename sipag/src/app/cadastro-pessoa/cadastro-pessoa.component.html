@@ -103,46 +103,6 @@
         <option value="TO">TO</option>
       </select>
     </div>
-
-    <div class="form-group">
-      <label>Motivo Pela Qual Dirige*</label>
-      <select formControlName="motivacao" [(ngModel)]="pessoa.motorista.motivacao" class="form-control" id="porte">
-        <option value="ESTUDOS">ESTUDOS</option>
-        <option value="TRABALHO">TRABALHO</option>
-        <option value="APLICATIVO">APLICATIVO</option>
-        <option value="ALUGUEL">ALUGUEL</option>
-        <option value="VEICULO_EMPRESARIAL">VEICULO EMPRESARIAL</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>CNH Validade*</label>
-      <input formControlName="cnhValidade" [(ngModel)]="cnh.validade" type="date" name="bdaytime">
-    </div>
-
-    <div class="form-group">
-      <label>Placa Veiculo*</label>
-      <input formControlName="placa" [(ngModel)]="veiculo.placa" type="text" class="form-control" id="placa">
-    </div>
-    <div class="form-group">
-      <label>Ano Fabricação do Veiculo*</label>
-      <input formControlName="anoFabricacao" [(ngModel)]="veiculo.anoFabricacao" type="number" class="form-control"
-        id="anoFabricacao">
-    </div>
-    <div class="form-group">
-      <label>Cor Veiculo*</label>
-      <input formControlName="cor" [(ngModel)]="veiculo.cor" type="text" class="form-control" id="cor">
-    </div>
-    <div class="form-group">
-      <label>Condicao da Pintura Veiculo*</label>
-      <select formControlName="condicaoPintura" [(ngModel)]="veiculo.condicaoPintura" class="form-control" id="porte">
-        <option value="ORIGINAL">ORIGINAL</option>
-        <option value="REFEITA">REFEITA</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Marca Veiculo*</label>
-      <input formControlName="marca" [(ngModel)]="veiculo.marca" type="text" class="form-control" id="marca">
-    </div>
     <div class="form-group">
       <label>Password*</label>
       <input formControlName="password" [(ngModel)]="pessoa.password" type="text" class="form-control" id="cep">
