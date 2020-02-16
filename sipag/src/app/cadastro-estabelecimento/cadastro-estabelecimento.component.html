@@ -1,1 +1,135 @@
-<p>cadastro-estabelecimento works!</p>
+<div class="container">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-bordered table-striped mb-0">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">cnpj</th>
+            <th scope="col">email</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of estabelecimentos">
+            <th scope="row">{{item.nome}}</th>
+            <td>{{item.cnpj}}</td>
+            <td>{{item.email[0].email}}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="editar(item)">Editar</button>
+              <button type="button" class="btn btn-danger" (click)="deletarEstabelecimento(item.id)">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <br><b>
+        <h3>CADASTRO DE ESTABELECIMENTO {{estabelecimento.id ? '- Editando Estabelecimento' : '- Novo Estabelecimento'}}</h3>
+      </b><br>
+  
+      <div class="form-group">
+        <label>Nome*</label>
+        <input formControlName="nome"  type="text" class="form-control" id="nome">
+      </div>
+      <div class="form-group">
+        <label>CNPJ*</label>
+        <input formControlName="cnpj"  type="text" class="form-control" id="cnpj">
+      </div>
+
+
+
+
+
+
+      <div class="form-group" >
+        <div  *ngFor="let item of getEnderecoControl.controls; let i = index" formArrayName="enderecos" [formGroupName]="'enderecos'">
+            <div [formGroupName]="i">
+            <br><br><br>
+            <button style="float:right" type="button" class="btn btn-danger" (click)="deleteEndereco(i)">Remover Endereco</button>
+            <div class="form-group">
+                <label>CEP*</label>
+                <input formControlName="cep" type="text" class="form-control" id="cep">
+            </div>
+            <div class="form-group">
+                <label>Lougradouro*</label>
+                <input formControlName="lougradouro" type="text" class="form-control" id="lougradouro">
+            </div>
+            <div class="form-group">
+                <label>Bairro*</label>
+                <input formControlName="bairro" type="text" class="form-control" id="bairro">
+            </div>
+            <div class="form-group">
+                <label>Cidade*</label>
+                <input formControlName="cidade" type="text" class="form-control" id="cidade">
+            </div>
+            <div class="form-group">
+                <label>Uf*</label>
+                <input formControlName="uf" type="text" class="form-control" id="uf">
+            </div>
+            <div class="form-group">
+                <label>Complemento*</label>
+                <input formControlName="complemento" type="text" class="form-control" id="complemento">
+            </div>
+        </div>
+        </div>
+        <button style="float: right;" type="button" class="btn btn-primary" (click)="adicionarEndereco()">Adicinar Endereco</button>
+      </div>
+
+
+
+
+    
+
+
+
+
+
+<br><br><hr><br><br>
+      <div class="form-group" >
+        <div  *ngFor="let item of getEmailControl.controls; let i = index" formArrayName="email" [formGroupName]="'email'">
+            <div [formGroupName]="i">
+            <br><br><br>
+            <button style="float:right" type="button" class="btn btn-danger" (click)="deleteEmail(i)">Remover Email</button>
+            <div class="form-group">
+                <label>Email*</label>
+                <input formControlName="email" type="text" class="form-control" id="cep">
+            </div>
+        </div>
+        </div>
+        <button style="float: right;" type="button" class="btn btn-primary" (click)="adicionarEmail()">Adicinar Email</button>
+      </div>
+
+
+
+
+
+      <br><br><hr><br><br>
+      <div class="form-group" >
+        <div  *ngFor="let item of getTelefoneControl.controls; let i = index" formArrayName="telefone" [formGroupName]="'telefone'">
+            <div [formGroupName]="i">
+            <br><br><br>
+            <button style="float:right" type="button" class="btn btn-danger" (click)="deleteTelefone(i)">Remover Telefone</button>
+            <div class="form-group">
+                <label>Número*</label>
+                <input formControlName="numero" type="text" class="form-control" id="cep">
+            </div>
+            <div class="form-group">
+                <label>Tipo*</label>
+                <input formControlName="tipo" type="text" class="form-control" id="cep">
+            </div>
+        </div>
+        </div>
+        <button style="float: right;" type="button" class="btn btn-primary" (click)="adicionarTelefone()">Adicinar Telefone</button>
+      </div>
+
+
+
+
+      <br><br><br>
+      <button type="button" class="btn btn-primary" [disabled]="!form.valid"
+        type="submit">{{estabelecimento.id ? 'Salvar Estabelecimento Editada' : 'Criar Estabelecimento'}}</button>
+      <button *ngIf="estabelecimento.id" type="button" class="btn btn-success" (click)="limparForm()">CRIA
+        NOVO</button><br><br><br>
+    </form>
+  </div>
