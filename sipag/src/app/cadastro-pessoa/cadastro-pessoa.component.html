@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+      <thead>
+        <tr>
+          <th scope="col">Email</th>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of allPessoas">
+          <th scope="row">{{item.email}}</th>
+          <td>[{{item.perfil[0].perfil}}] {{item.nome}}</td>
+          <td>{{item.cpf}}</td>
+          <td>{{item.enabled}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="editar(item)">Editar</button>
+            <button type="button" class="btn btn-danger" (click)="deletarCliente(item.id)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <br><b>
+      <h3>CADASTRO DE PESSOA {{pessoa.id ? '- Editando Pessoa' : '- Nova Pessoa'}}</h3>
+    </b><br>
+
+    <div class="form-group">
+      <label>Perfil*</label>
+      <select formControlName="perfil" [(ngModel)]="perfil.perfil" class="form-control" id="porte">
+        <option value="ADMIN">ADMIN</option>
+        <option value="OPERADOR">OPERADOR</option>
+        <option value="USUARIO">USUARIO</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Nome*</label>
+      <input formControlName="nome" [(ngModel)]="pessoa.nome" type="text" class="form-control" id="nome">
+    </div>
+    <div class="form-group">
+      <label>email*</label>
+      <input formControlName="email" [(ngModel)]="pessoa.email" type="text" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+      <label>CPF*</label>
+      <input formControlName="cpf" [(ngModel)]="pessoa.cpf" type="number" class="form-control" id="cpf">
+    </div>
+    <div class="form-group">
+      <label>Data Nascimento*</label>
+      <input formControlName="dataNascimento" [(ngModel)]="pessoa.dataNascimento" type="date" name="bdaytime">
+    </div>
+    <div class="form-group">
+      <label>Telefone*</label>
+      <input formControlName="telefone" [(ngModel)]="pessoa.telefone" type="number" class="form-control" id="nome">
+    </div>
+    <div class="form-group">
+      <label>Bairro*</label>
+      <input formControlName="bairro" [(ngModel)]="endereco.bairro" type="text" class="form-control" id="bairro">
+    </div>
+    <div class="form-group">
+      <label>CEP*</label>
+      <input formControlName="cep" [(ngModel)]="endereco.cep" type="text" class="form-control" id="cep">
+    </div>
+    <div class="form-group">
+      <label>Complemento</label>
+      <input formControlName="complemento" [(ngModel)]="endereco.complemento" type="text" class="form-control"
+        id="complemento">
+    </div>
+    <div class="form-group">
+      <label>UF*</label>
+      <select formControlName="uf" [(ngModel)]="endereco.uf" class="form-control" id="porte">
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AP">AP</option>
+        <option value="AM">AM</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MT">MT</option>
+        <option value="MS">MS</option>
+        <option value="MG">MG</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PR">PR</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RS">RS</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="SC">SC</option>
+        <option value="SP">SP</option>
+        <option value="SE">SE</option>
+        <option value="TO">TO</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Password*</label>
+      <input formControlName="password" [(ngModel)]="pessoa.password" type="text" class="form-control" id="cep">
+    </div>
+    <button type="button" class="btn btn-primary" [disabled]="!form.valid"
+      type="submit">{{pessoa.id ? 'Salvar Pessoa Editada' : 'Criar Pessoa'}}</button>
+    <button *ngIf="pessoa.id" type="button" class="btn btn-success" (click)="limparForm()">CRIA
+      NOVO</button><br><br><br>
+  </form>
+</div>
